@@ -15,8 +15,10 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
       - name: Trigger Argos manually
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git commit --allow-empty -m "Trigger Argos manually"
-          git push
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          run: |
+            git config --global user.name 'github-actions[bot]'
+            git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+            git commit --allow-empty -m "Trigger Argos manually"
+            git push
