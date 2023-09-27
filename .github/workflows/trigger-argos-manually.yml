@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: checkout
+        uses: actions/checkout@v4
       - name: Trigger Argos manually
         run: |
           git config --global user.name 'github-actions[bot]'
