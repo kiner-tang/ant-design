@@ -1,0 +1,20 @@
+name: Trigger Argos manually
+
+on: workflow_dispatch
+
+permissions:
+  contents: read
+
+jobs:
+  trigger_argos_manually:
+    permissions:
+      pull-requests: write  # for actions-cool/verify-files-modify to update status of PRs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Argos manually
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git commit --allow-empty -m "Trigger Argos manually"
+          git push
